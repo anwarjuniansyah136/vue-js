@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <div>
+            <button v-on:click="count--">-</button>
+            <span>{{count}}</span>
+            <button v-on:click="count++">+</button>
+        </div>
+        <div>
+            <button @click="mengurangi()">-</button>
+            <span>{{count}}</span>
+            <button @click="menambah()">+</button>
+        </div>
+        <div>
+            <button @click="tdhTahu('anwar')">hello</button>
+        </div>
+        <div>
+            <input type="text" v-on:keydown.enter="tdhTahu('ngentid')">
+            <br>
+            <input type="text" v-on:keydown.space="tdhTahu('tolol')">
+            <br>
+            <input type="text" v-on:keydown.right="tdhTahu('bangsat')">
+            <!-- ini juga bisa -->
+            <br>
+            <input type="text" @keydown.enter="tdhTahu('ngentid')">
+            <br>
+            <input type="text" @keydown.space="tdhTahu('tolol')">
+            <br>
+            <input type="text" @keydown.right="tdhTahu('bangsat')">
+        </div>
+        <br>
+                            <!--atau ini juga bisa v-on:submit.prevent  -->
+        <form method="post" action="whatever.html" @submit.prevent >
+            <input type="text">
+            <input type="submit" value="send">
+        </form>
+    </div>
+    <script type="module">
+        import {createApp} from 'https://unpkg.com/vue@3/dist/vue.esm-browser.js'
+
+        createApp({
+            data(){
+                return{
+                    count: 100
+                }
+            },
+            methods:{
+                mengurangi(){
+                    this.count--
+                },
+                menambah(){
+                    this.count++
+                },
+                tdhTahu(variable){
+                    alert('hello ' + variable)
+                }
+            }
+        }).mount('#app')
+    </script>
+</body>
+</html>

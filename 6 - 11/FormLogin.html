@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <form action="">
+            <div>
+                <label for="">Username</label><br>
+                <input type="text" v-model="username" placeholder="Username"><br>
+                <label for="" v-if="usernameConfirm">minimal username 8 karakter</label>
+            </div>
+            <div>
+                <label for="">Password</label><br>
+                <input type="password" v-model="password" placeholder="Password"><br>
+                <label for="" v-if="passwordConfirm">minimal password 8 karakter</label>
+            </div>
+            <div>
+                <label for="">Konfirmasi Password</label><br>
+                <input type="password" v-model="confPassword" placeholder="Konfirmasi Password"><br>
+                <label for="" v-if="confPass">Konfirmasi Password Tidak Sama</label>
+            </div>
+        </form>
+    </div>
+    <script type="module">
+        import {createApp} from 'https://unpkg.com/vue@3/dist/vue.esm-browser.js'
+
+        createApp({
+            data(){
+                return {
+                    username: '',
+                    password: '',
+                    confPassword: '',
+                    usernameConfirm: false,
+                    passwordConfirm: false,
+                    confPass: false
+                }
+            },
+            watch:{
+                username(value){
+                    if(value.length < 8){
+                        this.usernameConfirm = true
+                    }
+                    else{
+                        this.usernameConfirm = false
+                    }
+                },
+                password(value){
+                    if(value.length < 8){
+                        this.passwordConfirm = true
+                    }
+                    else{
+                        this.passwordConfirm = false
+                    }
+                },
+                confPassword(value){
+                    if(this.password != value){
+                        this.confPass = true
+                    }
+                    else{
+                        this.confPass = false
+                    }
+                }
+            }
+        }).mount('#app')
+    </script>
+</body>
+</html>

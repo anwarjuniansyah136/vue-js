@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .textBiru{
+            color: brown;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <div>
+            <a :href="url">google</a><br>
+            <a v-bind:href="url">google</a>
+        </div>
+        <div>
+            <div :class="selectedClass">
+                name : {{user.name}}
+            </div>
+            <div>
+                <img v-bind:src="user.gambar" :style="{width: responsiveWidth}" :alt="'image of ' + user.name"
+                :title="'image of ' + user.name">
+            </div>
+        </div>
+    </div>
+    <script type="module">
+        import {createApp} from 'https://unpkg.com/vue@3/dist/vue.esm-browser.js'
+
+        createApp({
+            data(){
+                return {
+                    url: "http://google.com",
+                    user:{
+                        name : 'Orang',
+                        gambar : 'https://th.bing.com/th/id/R.c908a39de0ecd932d6c0ec579557cd6b?rik=PqpYVtFf99%2fVzQ&riu=http%3a%2f%2f4.bp.blogspot.com%2f-rWZHuYFjt2s%2fTcizQxId2mI%2fAAAAAAAADNo%2fs4duoYzyReg%2fs1600%2fgambar-binatang.jpg&ehk=jx34IegjR85D7p3tTjBxWOwPUlTluwE7XZ%2b8CgFDE9k%3d&risl=&pid=ImgRaw&r=0'
+                    },
+                    responsiveWidth: '400px',
+                    selectedClass: "textBiru"
+                }
+            }
+        }).mount('#app')
+    </script>
+</body>
+</html>

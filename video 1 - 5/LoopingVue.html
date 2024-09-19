@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <!-- perulangan biasa -->
+        <div v-for="angka in 10">
+            {{angka}}
+        </div>
+        <ul v-for="angka in 10">
+            <li>{{angka}}</li>
+        </ul>
+        <!-- perulangan array 
+        v-for="whatever in fruits" -->
+        <ul v-for="(whatever,urutan) in fruits">
+            <li>{{whatever}} {{urutan}} <button @click="hapus(urutan)">x</button></li>
+        </ul>
+    </div>
+
+    <script type="module">
+        import { createApp } from 'https://unpkg.com/vue@3/dist/vue.esm-browser.js'
+    
+        createApp({
+            data(){
+                return{
+                    fruits:['Mangga','Apel','Anggur','Melon','Salak']
+                }
+            },
+            methods: {
+                hapus(urutan){
+                    this.fruits.splice(urutan,1)
+                }
+            }
+        }).mount('#app')
+    </script>
+</body>
+</html>
